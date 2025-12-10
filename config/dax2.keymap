@@ -9,13 +9,13 @@
 
 &mt {
     quick-tap-ms = <0>;
-    tapping-term-ms = <160>;
+    tapping-term-ms = <150>;
     flavor = "balanced";
 };
 
 &lt {
     flavor = "balanced";
-    tapping-term-ms = <160>;
+    tapping-term-ms = <150>;
     quick-tap-ms = <0>;
 };
 
@@ -29,7 +29,7 @@
             layers = <0>;
         };
 
-        kj_scroll {
+        kl_scroll {
             bindings = <&mo 5>;
             key-positions = <20 21>;
             layers = <0>;
@@ -53,7 +53,7 @@
             bindings = <&mo>, <&esc_lang2>;
 
             #binding-cells = <2>;
-            tapping-term-ms = <160>;
+            tapping-term-ms = <150>;
             flavor = "balanced";
         };
     };
