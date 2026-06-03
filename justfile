@@ -6,13 +6,9 @@ default:
 setup:
     @bash scripts/setup.sh
 
-# Build all targets in parallel (default, ~70% faster than baseline)
+# Build all targets with Nix environment
 build:
-    @bash scripts/build.sh
-
-# Build all targets sequentially (useful for debugging build errors)
-build-sequential:
-    @bash scripts/build-sequential.sh
+    @bash scripts/build-nix.sh
 
 # Build specific target (e.g., just build-target dax2_R)
 build-target TARGET="dax2_R":
@@ -41,6 +37,5 @@ clean:
 # Complete cleanup including west workspace (for recovery from broken states)
 pristine:
     @echo "Performing complete cleanup..."
-    @docker-compose run --rm zmk bash -c "west forall -c 'git clean -fdx' || true"
-    @rm -rf build/ .west/ modules/ zephyr/ zmk/ bootloader/
+    @rm -rf build/ .west/ modules/ zephyr/ zmk/ bootloader/ .ccache/
     @echo "Complete cleanup done. Run 'just setup' to reinitialize."
