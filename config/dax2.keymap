@@ -22,20 +22,21 @@
             #binding-cells = <0>;
             bindings = <&kp LBKT &kp RBKT &kp LEFT>;
         };
+        /* Release shift before LEFT to avoid Shift+Left; use a mod-morph once zmk#683 is fixed. */
         macro_parens: macro_parens {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LPAR &kp RPAR &mm_safe_left>;
+            bindings = <&kp LPAR &kp RPAR &macro_release &kp LSHFT &kp RSHFT &macro_tap &kp LEFT>;
         };
         macro_braces: macro_braces {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(LBKT) &kp LS(RBKT) &mm_safe_left>;
+            bindings = <&kp LS(LBKT) &kp LS(RBKT) &macro_release &kp LSHFT &kp RSHFT &macro_tap &kp LEFT>;
         };
         macro_angles: macro_angles {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(COMMA) &kp LS(DOT) &mm_safe_left>;
+            bindings = <&kp LS(COMMA) &kp LS(DOT) &macro_release &kp LSHFT &kp RSHFT &macro_tap &kp LEFT>;
         };
         macro_quotes: macro_quotes {
             compatible = "zmk,behavior-macro";
@@ -45,7 +46,7 @@
         macro_dquotes: macro_dquotes {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(SQT) &kp LS(SQT) &mm_safe_left>;
+            bindings = <&kp LS(SQT) &kp LS(SQT) &macro_release &kp LSHFT &kp RSHFT &macro_tap &kp LEFT>;
         };
         macro_graves: macro_graves {
             compatible = "zmk,behavior-macro";
@@ -112,12 +113,6 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp COMMA>, <&td_angle>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-        mm_safe_left: mm_safe_left {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT>, <&kp LEFT>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
     };
